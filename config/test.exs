@@ -1,4 +1,4 @@
-use Mix.Config
+import Config
 
 # EventStore
 config :extreme, :event_store,

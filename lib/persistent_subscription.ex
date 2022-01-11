@@ -68,9 +68,7 @@ defmodule Extreme.PersistentSubscription do
         %{subscription_id: subscription_id, subscriber: subscriber} = state
       ) do
     Logger.debug(fn ->
-      "Persistent subscription #{inspect(subscription_id)} event appeared: #{inspect(msg)} correlation_id: #{
-        inspect(correlation_id)
-      }"
+      "Persistent subscription #{inspect(subscription_id)} event appeared: #{inspect(msg)} correlation_id: #{inspect(correlation_id)}"
     end)
 
     send(subscriber, {:on_event, event, correlation_id})
@@ -94,9 +92,7 @@ defmodule Extreme.PersistentSubscription do
         %{connection: connection, subscription_id: subscription_id} = state
       ) do
     Logger.debug(fn ->
-      "Persistent subscription #{inspect(subscription_id)} ack event id: #{inspect(event_id)} correlation_id: #{
-        inspect(correlation_id)
-      }"
+      "Persistent subscription #{inspect(subscription_id)} ack event id: #{inspect(event_id)} correlation_id: #{inspect(correlation_id)}"
     end)
 
     :ok = GenServer.call(connection, {:ack, ack_event(subscription_id, event_id), correlation_id})
@@ -109,9 +105,7 @@ defmodule Extreme.PersistentSubscription do
         %{connection: connection, subscription_id: subscription_id} = state
       ) do
     Logger.debug(fn ->
-      "Persistent subscription #{inspect(subscription_id)} nack event id: #{inspect(event_id)} correlation_id: #{
-        inspect(correlation_id)
-      } nack_action: #{inspect(nack_action)}"
+      "Persistent subscription #{inspect(subscription_id)} nack event id: #{inspect(event_id)} correlation_id: #{inspect(correlation_id)} nack_action: #{inspect(nack_action)}"
     end)
 
     :ok =
@@ -129,9 +123,7 @@ defmodule Extreme.PersistentSubscription do
         %{subscription_ref: ref, subscription_id: subscription_id} = state
       ) do
     Logger.info(fn ->
-      "Stopping persistent subscription #{inspect(subscription_id)} as subscriber is down due to: #{
-        inspect(reason)
-      }"
+      "Stopping persistent subscription #{inspect(subscription_id)} as subscriber is down due to: #{inspect(reason)}"
     end)
 
     {:stop, {:shutdown, :subscriber_down}, state}

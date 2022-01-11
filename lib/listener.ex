@@ -155,9 +155,7 @@ defmodule Extreme.Listener do
         ref = Process.monitor(subscription)
 
         Logger.info(fn ->
-          "Listener subscribed to stream #{state.stream_name}. Start processing live events from event no: #{
-            last_event + 1
-          }"
+          "Listener subscribed to stream #{state.stream_name}. Start processing live events from event no: #{last_event + 1}"
         end)
 
         {:ok,
@@ -183,9 +181,7 @@ defmodule Extreme.Listener do
         ref = Process.monitor(subscription)
 
         Logger.info(fn ->
-          "Listener patching from stream #{state.stream_name} from event no: #{last_event + 1} until #{
-            patch_until
-          }"
+          "Listener patching from stream #{state.stream_name} from event no: #{last_event + 1} until #{patch_until}"
         end)
 
         {:ok,
